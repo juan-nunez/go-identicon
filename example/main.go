@@ -3,6 +3,6 @@ package main
 import "go-identicon"
 
 func main() {
-	icon := identicon.NewIdenticon("Hello world, how are you")
+	icon := identicon.NewIdenticon("example@gmail.com")
 	icon.ToImage()
 }

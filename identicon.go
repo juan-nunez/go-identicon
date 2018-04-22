@@ -38,16 +38,19 @@ func (icon identicon) getColorFromHash() color.NRGBA {
 }
 
 func (icon identicon) ToImage() bool {
-	color := icon.getColorFromHash()
-	img := image.NewNRGBA(image.Rect(0,0,256,256))
+	hashColor := icon.getColorFromHash()
+	white := color.NRGBA{255,255,255,255}
+	img := image.NewNRGBA(image.Rect(0,0,icon.pixelDimension,icon.pixelDimension))
 	bounds := icon.getBounds()
 	for i, b := range icon.hash {
 		if (b & 1) == 1 {
-			icon.drawRect(img, bounds[i], color)
+			icon.drawRect(img, bounds[i], hashColor)
+		} else {
+			icon.drawRect(img, bounds[i], white)
 		}
 	}
 
-	f, err := os.Create("image.png")
+	f, err := os.Create(icon.key + ".png")
 	if err != nil {
 		fmt.Println("Something went wrong creating file")
 		return false
