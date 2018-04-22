@@ -2,13 +2,12 @@ package identicon
 
 import (
 	"crypto/md5"
+	"image/color"
 	"image"
-    "image/color"
-    "fmt"
-    "os"
-    "image/png"
+	"os"
+	"fmt"
+	"image/png"
 )
-
 
 type identicon struct {
 	key string
