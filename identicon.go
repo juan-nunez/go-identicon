@@ -1,12 +1,12 @@
 package identicon
 
 import (
-    "crypto/md5"
-    "image"
-	"image/color"
-	"fmt"
-	"os"
-	"image/png"
+	"crypto/md5"
+	"image"
+    "image/color"
+    "fmt"
+    "os"
+    "image/png"
 )
 
 
@@ -24,7 +24,7 @@ func NewIdenticon(key string) *identicon {
 }
 
 func (icon identicon) generate(key []byte) [16]byte{
-    return md5.Sum(key)
+	return md5.Sum(key)
 }
 
 func (icon identicon) getColorFromHash() color.NRGBA {
